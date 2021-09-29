@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+    <a-assets>
+        <img id="tex" src="chien.jpg">
+    </a-assets>
+      <a-plane src="#tex" position="0 0 0" rotation="-90 0 0" width="4" height="4"></a-plane>
+
+      <a-plane src="#tex" position="-1.25 1 2" rotation="0 0 0" width="1.5" height="2"></a-plane>
+      <a-plane src="#tex" position="-1.25 1 2" rotation="180 0 0" width="1.5" height="2"></a-plane>
+
+      <a-plane src="#tex" position="1 1 2" rotation="0  0 0" width="2" height="2"></a-plane>
+      <a-plane src="#tex" position="1 1 2" rotation="180 0 0" width="2" height="2"></a-plane>
+      
+      
+      <a-plane src="#tex" position="0 1 -2" rotation="0 0 0" width="4" height="2"></a-plane>
+      <a-plane src="#tex" position="0 1 -2" rotation="180 0 0" width="4" height="2"></a-plane>
+
+      <a-plane src="#tex" position="2 1 0" rotation="0 90 0" width="4" height="2"></a-plane>
+      <a-plane src="#tex" position="2 1 0" rotation="0 -90 0" width="4" height="2"></a-plane>
+
+      <a-plane src="#tex" position="-2 1 0" rotation="0 90 0" width="4" height="2"></a-plane>
+      <a-plane src="#tex" position="-2 1 0" rotation="0 -90 0" width="4" height="2"></a-plane>
+
+      <a-plane src="#tex" position="-1 1 0" rotation="0 90 0" width="2" height="2"></a-plane>
+      <a-plane src="#tex" position="-1 1 0" rotation="0 -90 0" width="2" height="2"></a-plane>
+
+      <a-plane src="#tex" position="1 1 0" rotation="0 90 0" width="2" height="2"></a-plane>
+      <a-plane src="#tex" position="1 1 0" rotation="0 -90 0" width="2" height="2"></a-plane>
+
+
+
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>
