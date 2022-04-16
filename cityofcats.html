@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://ensaama-officiel-numerique.github.io/components/detect/detect.js"></script>
+    <script src="https://ensaama-officiel-numerique.github.io/components/debug/debug.js"></script>
+
+    <script>
+    AFRAME.registerComponent('test', {
+        init: function () {
+            //console.log(this.el)
+            console.log(this.el.getAttribute('mixin'));
+        }
+    });
+    </script>
+</head>
+
+<body>
+
+    <a-scene background="color: skyblue"  
+    gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+    debug-keyboard="key: e, r; event: enter-0, exit-1; target: #renard, #renard">
+
+        <a-assets>
+            <a-asset-item id="fox" src="./lechat95.glb"></a-asset-item>
+            <a-mixin id="survey" animation-mixer="clip: "></a-mixin>
+            <a-mixin id="run" animation-mixer="clip: etirement"></a-mixin>
+            <a-mixin id="walk" animation-mixer="clip: saut"></a-mixin>
+            <a-asset-item id="ville" src="./CITYOFCATT.glb"></a-asset-item>
+        </a-assets>
+
+        //---Chat---
+
+        <a-entity id="renard" position="0 0 -1" scale="0.3 0.3 0.3" rotation="0 180 0"
+                gltf-model="#fox" mixin="survey" test
+                proximity="trace: true; seuils: 1, 2"
+                event-set__enter-0="event: _event: enter-0; mixin: run;"
+                event-set__exit-1="event: _event: exit-1; mixin: walk;"            
+                event-set__enter-1="event: _event: enter-1; mixin: walk;" 
+                event-set__exit-2="event: _event: enter-2; mixin: survey;">
+        </a-entity>
+
+        //---Chat2---
+
+        <a-entity id="renard2" position="0 0 2" scale="0.3 0.3 0.3" rotation="0 180 0"
+                gltf-model="#fox" mixin="survey" test
+                proximity="trace: true; seuils: 1, 2"
+                event-set__enter-0="event: _event: enter-0; mixin: run;"
+                event-set__exit-1="event: _event: exit-1; mixin: walk;"            
+                event-set__enter-1="event: _event: enter-1; mixin: walk;" 
+                event-set__exit-2="event: _event: enter-2; mixin: survey;">
+        </a-entity>
+
+        </a-plane>
+
+        //---camera---
+
+        <a-entity camera position="0 0.5 0" currentposition
+            look-controls wasd-controls="acceleration:10">
+            <a-text id="txtlog" value="appuyez sur les touches 'e' et 'r' \n pour envoyer des event 'enter-0' et 'exit-0'" 
+                align="center" color="#FF0000" position="0 0 -1" rotation="0 0 0"
+                scale="0.25 0.25 0.25">
+            </a-text>
+        </a-entity>
+
+        //---ville---
+        
+          <a-entity position="-1 0 0" 
+                    gltf-model="#ville"
+                    shadow="cast: true; receive:true"></a-entity>
+      
+        //---ambient---
+      
+          <a-entity light="type: ambient; intensity: 2;"></a-entity>
+      
+    
+       
+    </a-scene>
+
+</body>
+
+</html>
